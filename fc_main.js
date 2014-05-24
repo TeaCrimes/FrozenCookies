@@ -1480,7 +1480,7 @@ function autoCookie() {
       FrozenCookies.hc_gain += changeAmount;
       updateLocalStorage();
     }
-    updateCaches();
+    setTimeout("updateCaches()",50);
     var recommendation = nextPurchase();
     var delay = delayAmount();
     if (FrozenCookies.timeTravelAmount) {
