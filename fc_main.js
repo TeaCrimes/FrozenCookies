@@ -1503,7 +1503,7 @@ function autoCookie() {
     
     if (FrozenCookies.autoBuy && (Game.cookies >= delay + recommendation.cost) && (FrozenCookies.pastemode || isFinite(nextChainedPurchase().efficiency))) {
 //   
-      setTimeout(testBuy(recommendation), 500);
+      setTimeout("testBuy(recommendation)", 50);
       FrozenCookies.autobuyCount += 1;
       if (FrozenCookies.trackStats == 5 && recommendation.type == 'upgrade') {
         saveStats();
