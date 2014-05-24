@@ -788,7 +788,7 @@ function addScores(recommendations) {
 
 function nextPurchase(recalculate) {
   if (recalculate) {
-    setTimeout("var recList = recommendationList(recalculate)",50);
+    var recList = recommendationList(recalculate);
     var purchase = null;
     for (var i = 0; i < recList.length; i++) {
       var target = recList[i];
@@ -1500,7 +1500,7 @@ function autoCookie() {
     
     if (FrozenCookies.autoBuy && (Game.cookies >= delay + recommendation.cost) && (FrozenCookies.pastemode || isFinite(nextChainedPurchase().efficiency))) {
 //   
-      setTimeout("testBuy(recommendation)", 50);
+      testBuy(recommendation);
       FrozenCookies.autobuyCount += 1;
       if (FrozenCookies.trackStats == 5 && recommendation.type == 'upgrade') {
         saveStats();
