@@ -753,16 +753,13 @@ function purchaseEfficiency(price, deltaCps, baseDeltaCps, currentCps) {
 
 function recommendationList(recalculate) {
   if (recalculate) {
-    FrozenCookies.caches.recommendationList = addScores(
+    FrozenCookies.caches.recommendationList = setTimeout(addScores(
       upgradeStats(recalculate)
       .concat(buildingStats(recalculate))
       .concat(santaStats())
       .sort(function(a,b){
         return a.efficiency != b.efficiency ? a.efficiency - b.efficiency : (a.delta_cps != b.delta_cps ? b.delta_cps - a.delta_cps : a.cost - b.cost);
-      }));
-      if (FrozenCookies.pastemode) {
-        FrozenCookies.caches.recommendationList.reverse();
-      }
+      })),50);
   }
   return FrozenCookies.caches.recommendationList;
 //  return upgradeStats(recalculate).concat(buildingStats(recalculate)).sort(function(a,b){return (a.efficiency - b.efficiency)});
