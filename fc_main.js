@@ -753,13 +753,13 @@ function purchaseEfficiency(price, deltaCps, baseDeltaCps, currentCps) {
 
 function recommendationList(recalculate) {
   if (recalculate) {
-    FrozenCookies.caches.recommendationList = setTimeout(addScores(
+    FrozenCookies.caches.recommendationList = addScores(
       upgradeStats(recalculate)
       .concat(buildingStats(recalculate))
       .concat(santaStats())
       .sort(function(a,b){
         return a.efficiency != b.efficiency ? a.efficiency - b.efficiency : (a.delta_cps != b.delta_cps ? b.delta_cps - a.delta_cps : a.cost - b.cost);
-      })),50);
+      }));
   }
   return FrozenCookies.caches.recommendationList;
 //  return upgradeStats(recalculate).concat(buildingStats(recalculate)).sort(function(a,b){return (a.efficiency - b.efficiency)});
@@ -788,7 +788,7 @@ function addScores(recommendations) {
 
 function nextPurchase(recalculate) {
   if (recalculate) {
-    var recList = recommendationList(recalculate);
+    setTimeout("var recList = recommendationList(recalculate)",50);
     var purchase = null;
     for (var i = 0; i < recList.length; i++) {
       var target = recList[i];
