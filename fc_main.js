@@ -1502,13 +1502,8 @@ function autoCookie() {
     }
     
     if (FrozenCookies.autoBuy && (Game.cookies >= delay + recommendation.cost) && (FrozenCookies.pastemode || isFinite(nextChainedPurchase().efficiency))) {
-//    if (FrozenCookies.autoBuy && (Game.cookies >= delay + recommendation.cost)) {
-      recommendation.time = Date.now() - Game.startDate;
-//      full_history.push(recommendation);  // Probably leaky, maybe laggy?
-      recommendation.purchase.clickFunction = null;
-      disabledPopups = false;
-//      console.log(purchase.name + ': ' + Beautify(recommendation.efficiency) + ',' + Beautify(recommendation.delta_cps));
-      recommendation.purchase.buy();
+//   
+      setTimeout(testBuy(recommendation), 50);
       FrozenCookies.autobuyCount += 1;
       if (FrozenCookies.trackStats == 5 && recommendation.type == 'upgrade') {
         saveStats();
@@ -1569,6 +1564,15 @@ function autoCookie() {
       FrozenCookies.cookieBot = setTimeout(autoCookie, FrozenCookies.frequency);
     }
   }
+}
+
+function testBuy(recommendation) {
+      recommendation.time = Date.now() - Game.startDate;
+//      full_history.push(recommendation);  // Probably leaky, maybe laggy?
+      recommendation.purchase.clickFunction = null;
+      disabledPopups = false;
+//      console.log(purchase.name + ': ' + Beautify(recommendation.efficiency) + ',' + Beautify(recommendation.delta_cps));
+      recommendation.purchase.buy();
 }
 
 function FCStart() {
