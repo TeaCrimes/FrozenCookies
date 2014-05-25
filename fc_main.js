@@ -21,7 +21,7 @@ function setOverrides() {
   
   logEvent("Load", "Initial Load of Frozen Cookies v " + FrozenCookies.branch + "." + FrozenCookies.version + ". (You should only ever see this once.)");
 
-  FrozenCookies.frequency = 100;
+  FrozenCookies.frequency = 500;
   FrozenCookies.efficiencyWeight = 1.0;
   
   // Separate because these are user-input values
